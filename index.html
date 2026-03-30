@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aptos Airdrop — APT Token, Eligibility, Claim, Staking &amp; How Aptos Works (2026)</title>
+  <meta name="description" content="Complete Aptos airdrop guide (2026): how the APT token airdrop worked, eligibility criteria for testnet participants and NFT holders, how to claim APT, Aptos blockchain explained, Move language, APT staking, ecosystem overview, security checklist, and a deep FAQ.">
+  <meta name="author" content="Crypto Finance Experts">
+  <link rel="canonical" href="https://aptos-airdrop-guide.example.com/">
+  <link rel="icon" type="image/png" href="apt.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://aptos-airdrop-guide.example.com/">
+  <meta property="og:title" content="Aptos Airdrop — APT Token, Eligibility &amp; Complete Guide (2026)">
+  <meta property="og:description" content="Full Aptos airdrop guide: APT token distribution, testnet eligibility, claim process, Move blockchain explained, APT staking, ecosystem, and security.">
+  <meta property="og:image" content="cover.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aptos Airdrop — APT Token Guide (2026)">
+  <meta name="twitter:description" content="How the Aptos APT airdrop worked, eligibility, staking, Move language, and ecosystem guide for 2026.">
+
+  <style>
+    :root {
+      --b:    #2BACE2;
+      --b2:   #2090C4;
+      --b3:   #1674A0;
+      --ba:   #5BC8EF;
+      --bb:   #A8E4F8;
+      --bc:   #E0F6FD;
+
+      /* subtle green accent for Move brand */
+      --g:    #00D4AA;
+      --ga:   #33DDBB;
+
+      --ink:   #F0FAFF;
+      --sub:   #A8E4F8;
+      --muted: #94A3B8;
+      --dim:   #64748B;
+
+      --bg:    #02080F;
+      --card:  rgba(255,255,255,.028);
+      --line:  rgba(255,255,255,.07);
+      --lb:    rgba(43,172,226,.14);
+
+      --ok:   #34D399;
+      --warn: #FBBF24;
+      --err:  #F87171;
+
+      --r:  12px;
+      --rl: 18px;
+      --gap: 1.2rem;
+      --sh: 0 8px 32px rgba(0,0,0,.65);
+      --shb: 0 4px 26px rgba(43,172,226,.16);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 1000px 560px at 15%  0%,  rgba(32,144,196,.13), transparent 55%),
+        radial-gradient(ellipse  700px 420px at 88%  12%, rgba(0,212,170,.05),  transparent 50%),
+        radial-gradient(ellipse  600px 380px at 50%  96%, rgba(22,116,160,.08), transparent 55%);
+      color: var(--muted);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* subtle star dots */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.32) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 72%, rgba(255,255,255,.22) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 78% 30%, rgba(91,200,239,.40) 0%, transparent 100%),
+        radial-gradient(1px 1px at 91% 82%, rgba(255,255,255,.18) 0%, transparent 100%),
+        radial-gradient(1px 1px at 33% 55%, rgba(43,172,226,.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 10%, rgba(255,255,255,.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 8%  90%, rgba(0,212,170,.30) 0%, transparent 100%);
+    }
+
+    header, main, footer, section.step-guide { position: relative; z-index: 1 }
+
+    a { color: var(--ba); text-decoration: none }
+    a:hover { text-decoration: underline }
+    img { max-width: 100%; height: auto; display: block }
+    strong { color: #CCF0FF; font-weight: 600 }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.4rem }
+
+    h1,h2,h3,h4 { color: var(--ink); line-height: 1.25 }
+    h1 { font-size: clamp(2rem,5vw,3.2rem); font-weight: 800; letter-spacing: -.5px }
+    h2 { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 700; margin-top: 1.8rem; padding-top: .7rem; border-top: 1px solid var(--line) }
+    h3 { font-size: 1.08rem; font-weight: 700; color: var(--sub) }
+    p,li,td,th { font-size: 1rem; line-height: 1.75 }
+    .lead { font-size: 1.09rem; color: #7DD8F5 }
+
+    /* HERO */
+    header.hero {
+      padding: clamp(2.5rem,6vw,5.5rem) 0 clamp(2rem,4vw,3.5rem);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-card {
+      background: rgba(32,144,196,.055);
+      border: 1px solid var(--lb);
+      border-radius: var(--rl);
+      padding: clamp(1.4rem,3.5vw,2.5rem);
+      box-shadow: var(--sh), var(--shb);
+      position: relative; overflow: hidden;
+    }
+    /* shimmer top */
+    .hero-card::after {
+      content: '';
+      position: absolute; top: 0; left: 8%; right: 8%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(91,200,239,.60), rgba(0,212,170,.40), transparent);
+    }
+
+    .brand-row { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem }
+    .brand-logo {
+      width: 56px; height: 56px; border-radius: 14px;
+      border: 1px solid rgba(43,172,226,.30);
+      background: rgba(32,144,196,.12);
+      padding: .3rem; object-fit: contain;
+      box-shadow: 0 4px 16px rgba(43,172,226,.26);
+      flex: 0 0 auto;
+    }
+    .brand-label { color: var(--dim); font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .4px }
+    .brand-sub   { color: var(--muted); font-size: .85rem }
+
+    /* CTA */
+    .cta-center { display: flex; justify-content: center; margin-top: 2.2rem }
+    .cta {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: linear-gradient(135deg, #5BC8EF 0%, #2BACE2 38%, #2090C4 72%, #1674A0 100%);
+      color: #001624;
+      padding: 1.2rem 3.2rem;
+      border-radius: 16px;
+      font-weight: 900; font-size: 1.15rem; letter-spacing: .15px;
+      box-shadow:
+        0 0 0 1px rgba(43,172,226,.26),
+        0 0 32px rgba(43,172,226,.34),
+        0 8px 24px rgba(32,144,196,.30),
+        0 22px 50px rgba(22,116,160,.22);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: transform .18s, box-shadow .18s, filter .18s;
+    }
+    .cta:hover {
+      transform: translateY(-3px) scale(1.025); filter: brightness(1.07);
+      color: #001624; text-decoration: none;
+      box-shadow:
+        0 0 0 1px rgba(43,172,226,.42),
+        0 0 48px rgba(43,172,226,.50),
+        0 10px 32px rgba(32,144,196,.40),
+        0 28px 60px rgba(22,116,160,.30);
+    }
+
+    /* NOTE */
+    .note {
+      border-left: 3px solid var(--ba);
+      padding: .85rem 1rem;
+      background: rgba(32,144,196,.07);
+      border-radius: 0 9px 9px 0;
+      color: var(--sub); margin-top: 1rem;
+    }
+    .note.warn {
+      border-left-color: var(--warn);
+      background: rgba(251,191,36,.07);
+      color: #FEF3C7;
+    }
+
+    /* STEPS */
+    section.step-guide {
+      padding: clamp(2rem,5vw,3.5rem) 0;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      background: rgba(43,172,226,.018);
+    }
+    .steps { display: grid; gap: var(--gap); grid-template-columns: 1fr }
+    .step {
+      background: var(--card); border: 1px solid var(--line);
+      border-top: 2px solid rgba(43,172,226,.32); border-radius: var(--r);
+      padding: 1.25rem; box-shadow: var(--sh); transition: transform .18s, box-shadow .18s;
+    }
+    .step:hover { transform: translateY(-3px); box-shadow: var(--sh), var(--shb) }
+    .step .icon {
+      width: 44px; height: 44px; border-radius: 9px;
+      display: inline-grid; place-items: center;
+      background: rgba(32,144,196,.13); margin-bottom: .65rem;
+      font-weight: 800; font-size: .95rem; color: var(--ba);
+      border: 1px solid rgba(43,172,226,.26);
+    }
+
+    /* CARD */
+    main { padding-top: .5rem }
+    main .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1.5rem; margin: 1.2rem 0; box-shadow: var(--sh);
+    }
+    main .card > h2:first-child { margin-top: 0; border-top: none; padding-top: 0 }
+
+    /* TOC */
+    .toc { border: 1px solid var(--lb); background: rgba(32,144,196,.05); border-radius: var(--r); padding: 1.1rem 1.3rem }
+    .toc strong { color: var(--ink) }
+    .toc ul { margin: .5rem 0 0; padding-left: 1.1rem }
+    .toc li { margin: .28rem 0; font-size: .96rem }
+    .toc a { font-weight: 600 }
+
+    /* GRID */
+    .callout-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; margin-top: .8rem }
+    .mini { background: rgba(255,255,255,.02); border: 1px solid var(--line); border-radius: var(--r); padding: 1rem }
+    .mini h3 { margin-bottom: .35rem }
+    .kpi-badges { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .55rem }
+    .kpi-badges span {
+      border: 1px solid rgba(43,172,226,.24); background: rgba(32,144,196,.10);
+      color: var(--sub); padding: .26rem .54rem;
+      border-radius: 999px; font-size: .87rem; font-weight: 600;
+    }
+
+    /* TOKO BARS */
+    .toko-bar { display: flex; flex-direction: column; gap: .6rem; margin-top: 1rem }
+    .toko-row { display: flex; align-items: center; gap: .85rem }
+    .toko-label { min-width: 210px; font-size: .92rem; color: #A8E4F8; font-weight: 600 }
+    .toko-track { flex: 1; height: 8px; background: rgba(255,255,255,.07); border-radius: 999px; overflow: hidden }
+    .toko-fill  { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--ba), var(--b)) }
+    .toko-fill.green { background: linear-gradient(90deg, var(--ga), var(--g)) }
+    .toko-val   { min-width: 55px; text-align: right; font-size: .9rem; font-weight: 700; color: var(--ba) }
+
+    /* ELIGIBILITY GROUPS */
+    .elig-grid { display: grid; gap: .7rem; margin-top: 1rem }
+    .elig-item {
+      display: flex; align-items: flex-start; gap: .9rem;
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--line);
+      border-radius: var(--r); padding: .9rem 1rem;
+    }
+    .elig-num {
+      min-width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(43,172,226,.15); border: 1px solid rgba(43,172,226,.24);
+      display: grid; place-items: center;
+      font-weight: 800; font-size: .88rem; color: var(--ba);
+      flex: 0 0 auto;
+    }
+    .elig-body { flex: 1 }
+    .elig-title { font-weight: 700; color: var(--ink); font-size: .97rem; margin-bottom: .2rem }
+    .elig-desc  { font-size: .93rem; color: var(--muted) }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--line) }
+    table { width: 100%; border-collapse: collapse; min-width: 480px }
+    th,td { padding: .8rem .95rem; border-bottom: 1px solid var(--line); text-align: left }
+    th { background: rgba(32,144,196,.07); color: var(--ink); font-weight: 700; font-size: .93rem }
+    tr.hi { background: rgba(32,144,196,.04) }
+    tr:hover td { background: rgba(255,255,255,.018) }
+    tr:last-child td { border-bottom: none }
+    .ok { color: var(--ok) } .warn { color: var(--warn) } .err { color: var(--err) }
+
+    /* EEAT */
+    .eeat { background: var(--card); border: 1px solid var(--lb); border-radius: var(--r); padding: 1.5rem; box-shadow: var(--sh) }
+    .eeat > h2:first-child { margin-top: 0; border-top: none; padding-top: 0 }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--line); padding: .9rem 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-button { all: unset; display: flex; justify-content: space-between; align-items: flex-start; width: 100%; cursor: pointer; gap: 1rem }
+    .faq-button:focus-visible { outline: 2px solid var(--b); border-radius: 4px }
+    .faq-button h3 { margin: 0; font-weight: 700; font-size: 1rem; line-height: 1.4 }
+    .faq-content { max-height: 0; overflow: hidden; transition: max-height .26s ease }
+    .faq-content.open { padding-top: .65rem }
+    .faq-plus { font-weight: 800; font-size: 1.35rem; color: var(--ba); flex: 0 0 auto; line-height: 1; transition: transform .2s }
+    .faq-button[aria-expanded="true"] .faq-plus { transform: rotate(45deg) }
+
+    @media(min-width:860px){
+      .steps { grid-template-columns: repeat(4,1fr) }
+      .callout-grid { grid-template-columns: 1fr 1fr }
+      .elig-grid { grid-template-columns: 1fr 1fr }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="container">
+    <div class="hero-card">
+      <div class="brand-row">
+        <img class="brand-logo" src="apt.png" alt="Aptos logo">
+        <div>
+          <div class="brand-label">Complete Airdrop &amp; Token Guide</div>
+          <div class="brand-sub">APT Token · Testnet Eligibility · Claim Process · Move L1 · Staking · Ecosystem</div>
+        </div>
+      </div>
+
+      <h1>Aptos Airdrop</h1>
+      <p class="lead" style="margin-top:.7rem">
+        The complete guide to the <strong>Aptos APT token airdrop</strong> — one of
+        the most anticipated Layer 1 launches of 2022, distributing tokens to
+        <strong>testnet participants, ANS domain holders, and NFT minters</strong>
+        who helped build and validate the Aptos blockchain before mainnet.
+        Understand how <strong>eligibility was determined</strong>,
+        how the <strong>claim process</strong> worked,
+        what makes Aptos's <strong>Move programming language</strong>
+        and parallel execution engine unique,
+        how <strong>APT staking</strong> secures the network,
+        and what the <strong>Aptos DeFi ecosystem</strong>
+        looks like for current APT holders.
+      </p>
+
+      <div class="cta-center">
+        <a href="#" class="cta" aria-label="Open Aptos App">
+          <span>◈</span> Open Aptos App
+        </a>
+      </div>
+
+      <div class="note warn">
+        <strong>Airdrop status:</strong> The Aptos mainnet airdrop concluded in October 2022
+        at mainnet launch. Any site claiming you can still claim APT through an external
+        link, wallet connection, or "recovery" process is a scam.
+        APT is now available on major centralised and decentralised exchanges.
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STEPS -->
+<section class="step-guide" aria-labelledby="airdrop-timeline">
+  <div class="container">
+    <h2 id="airdrop-timeline" style="margin-top:0;border-top:none;padding-top:0">
+      Aptos Airdrop Timeline: Testnet → Snapshot → Launch → Claim → Ecosystem
+    </h2>
+    <div class="steps" role="list">
+      <article class="step" role="listitem">
+        <div class="icon">01</div>
+        <h3>Testnet participation (2022)</h3>
+        <p>Aptos ran multiple public testnets throughout 2022 — Incentivized Testnet 1, 2, and 3 — inviting developers and node operators to run validators, submit transactions, and stress-test the Move VM and Block-STM parallel execution engine.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">02</div>
+        <h3>Snapshot of eligible activities</h3>
+        <p>Aptos Labs took a snapshot of qualifying on-chain activity across testnets, ANS (Aptos Name Service) domain registrations, and NFT mints on the official Aptos Souffl3 collection. Each category had a defined allocation tier.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">03</div>
+        <h3>Mainnet launch — October 2022</h3>
+        <p>Aptos mainnet launched on October 12, 2022 with initial APT airdrop claims enabled. Eligible wallets could connect to the official Aptos claim interface and receive their APT allocation — distributed directly to their Aptos mainnet address.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">04</div>
+        <h3>APT enters the ecosystem</h3>
+        <p>Claimed APT could be staked to validators to earn staking rewards, traded on emerging Aptos DEXs like Liquidswap and PancakeSwap Aptos edition, or used to interact with the growing DeFi and NFT ecosystem on Move.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="container" role="main">
+
+  <!-- TOC -->
+  <section class="card toc" aria-label="Table of Contents">
+    <strong>On this page — Aptos Airdrop:</strong>
+    <ul>
+      <li><a href="#overview">What is Aptos and why the APT airdrop was significant</a></li>
+      <li><a href="#move">Aptos's Move language and Block-STM: what makes Aptos different</a></li>
+      <li><a href="#eligibility">APT airdrop eligibility: every qualifying category explained</a></li>
+      <li><a href="#tokenomics">APT tokenomics: total supply, distribution, and vesting</a></li>
+      <li><a href="#claim">How the APT claim process worked</a></li>
+      <li><a href="#staking">APT staking: how to earn rewards on Aptos network</a></li>
+      <li><a href="#ecosystem">Aptos DeFi and NFT ecosystem in 2026</a></li>
+      <li><a href="#safety">Security: scams targeting APT holders and how to stay safe</a></li>
+      <li><a href="#comparison">Aptos vs Sui vs Solana vs Ethereum: L1 comparison</a></li>
+      <li><a href="#best-practices">Best practices for APT holders and stakers</a></li>
+      <li><a href="#troubleshooting">Troubleshooting: missing APT, wallet setup, staking issues</a></li>
+      <li><a href="#eeat">Authoritative sources &amp; references</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="card" id="overview">
+    <h2>What Is Aptos and Why the APT Airdrop Was Significant</h2>
+    <p>
+      <strong>Aptos</strong> is a Layer 1 blockchain developed by former Meta (Facebook)
+      engineers who originally built the <strong>Diem (Libra) blockchain</strong> — Meta's
+      abandoned global payments project. When Diem was shut down by regulators,
+      the core engineering team left Meta and founded Aptos Labs,
+      bringing with them years of work on the <strong>Move programming language</strong>
+      and the <strong>Block-STM parallel execution engine</strong> —
+      two of the most significant technical innovations in blockchain design.
+    </p>
+    <p>
+      The APT airdrop at mainnet launch in October 2022 was significant for several reasons:
+      it distributed tokens to genuine builders and testers rather than passive speculators,
+      it launched a technically distinct chain (Move-based, parallel execution) with meaningful
+      backing ($350M+ raised from a16z, Multicoin, FTX, and others), and it represented
+      the first major Move-based mainnet — a milestone for a new programming paradigm
+      that the broader crypto community had been watching since Diem's inception.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>The Diem/Meta connection</h3>
+        <p style="color:var(--muted)">Aptos's founding team built Move specifically for Diem — a global blockchain payments system Meta attempted to launch. When Diem failed under regulatory pressure, the technology didn't disappear — it became Aptos. Move's safety features were designed for financial applications at global scale, making Aptos arguably the most well-funded and technically prepared new L1 of 2022.</p>
+        <div class="kpi-badges"><span>Former Meta engineers</span><span>Diem heritage</span><span>Move language</span></div>
+      </div>
+      <div class="mini">
+        <h3>Why the airdrop attracted attention</h3>
+        <p style="color:var(--muted)">$350M+ in VC backing, a team with provable execution credentials, a genuinely novel technical stack (Move + Block-STM), and an airdrop that rewarded actual testnet participation rather than pure token farming created significant anticipation. The APT airdrop became one of 2022's most-discussed L1 launches despite a challenging macro environment.</p>
+        <div class="kpi-badges"><span>$350M+ raised</span><span>Novel tech stack</span><span>Testnet-first distribution</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOVE LANGUAGE -->
+  <section class="card" id="move">
+    <h2>Aptos's Move Language and Block-STM: What Makes Aptos Technically Different</h2>
+    <p>
+      Aptos's technical differentiation rests on two innovations developed during the Diem project —
+      the <strong>Move programming language</strong> and <strong>Block-STM</strong> parallel execution.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>Move programming language</h3>
+        <p style="color:var(--muted)">Move is a Rust-inspired smart contract language designed specifically for safe digital asset management. Its key innovation: assets in Move are first-class resources — they can only exist in one place at a time and cannot be accidentally duplicated or destroyed. This eliminates entire categories of vulnerabilities common in Solidity (reentrancy, overflow, unintended token creation). Move code is provably safer by construction, not by convention.</p>
+        <div class="kpi-badges"><span>Resource-based safety</span><span>No reentrancy</span><span>Formal verification</span></div>
+      </div>
+      <div class="mini">
+        <h3>Block-STM parallel execution</h3>
+        <p style="color:var(--muted)">Most blockchains execute transactions sequentially — one after another. Block-STM executes transactions in parallel across all available CPU cores, then validates that none of them conflicted (accessed the same state). Non-conflicting transactions are committed; conflicting ones are re-executed. This architecture enables theoretical throughput of 100,000+ TPS — compared to Ethereum's ~15 TPS and Solana's ~50,000 TPS.</p>
+        <div class="kpi-badges"><span>Parallel execution</span><span>100k+ TPS potential</span><span>Conflict detection</span></div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1rem">
+      <table aria-label="Move vs Solidity comparison">
+        <thead>
+          <tr><th>Dimension</th><th>Move (Aptos)</th><th>Solidity (Ethereum)</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Asset model</td>
+            <td class="ok">Resources — linear type system prevents duplication/destruction</td>
+            <td class="warn">Integers — require manual guard rails for safety</td>
+          </tr>
+          <tr>
+            <td>Reentrancy attacks</td>
+            <td class="ok">Structurally impossible by design</td>
+            <td class="warn">Possible — requires explicit prevention patterns</td>
+          </tr>
+          <tr class="hi">
+            <td>Formal verification</td>
+            <td class="ok">Move Prover — built-in formal verification tool</td>
+            <td class="warn">External tools required (Certora, Halmos)</td>
+          </tr>
+          <tr>
+            <td>Execution model</td>
+            <td class="ok">Block-STM parallel</td>
+            <td class="warn">Sequential (improving with EIP-7645, etc.)</td>
+          </tr>
+          <tr class="hi">
+            <td>Ecosystem maturity</td>
+            <td class="warn">Growing — newer ecosystem</td>
+            <td class="ok">Dominant — largest developer ecosystem</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY -->
+  <section class="card" id="eligibility">
+    <h2>APT Airdrop Eligibility: Every Qualifying Category Explained</h2>
+    <p>
+      The Aptos airdrop distributed APT across four primary eligibility categories,
+      each reflecting different forms of contribution to the network's development and testing.
+    </p>
+
+    <div class="elig-grid" role="list">
+      <div class="elig-item" role="listitem">
+        <div class="elig-num">1</div>
+        <div class="elig-body">
+          <div class="elig-title">Incentivized Testnet Participants</div>
+          <div class="elig-desc">Users who participated in Aptos's official incentivized testnets (IT1, IT2, IT3) — running validator nodes, submitting test transactions, or completing ecosystem tasks during the testnet programme. Higher participation tiers received larger APT allocations.</div>
+        </div>
+      </div>
+      <div class="elig-item" role="listitem">
+        <div class="elig-num">2</div>
+        <div class="elig-body">
+          <div class="elig-title">ANS Domain Holders (Aptos Name Service)</div>
+          <div class="elig-desc">Wallets that registered <strong>.apt</strong> domain names through the Aptos Name Service on testnet. ANS participation demonstrated genuine interest in the Aptos identity layer — a strong signal of authentic early adoption rather than airdrop farming.</div>
+        </div>
+      </div>
+      <div class="elig-item" role="listitem">
+        <div class="elig-num">3</div>
+        <div class="elig-body">
+          <div class="elig-title">Aptos Souffl3 NFT Minters</div>
+          <div class="elig-desc">Wallets that minted NFTs from the official Souffl3 (Aptos's native NFT platform) testnet collections. NFT minting required deeper ecosystem engagement than a simple transaction — another Sybil-resistant eligibility signal.</div>
+        </div>
+      </div>
+      <div class="elig-item" role="listitem">
+        <div class="elig-num">4</div>
+        <div class="elig-body">
+          <div class="elig-title">Petra Wallet Early Users</div>
+          <div class="elig-desc">Early adopters of Petra — Aptos's official browser extension wallet — who used it during testnet phases. Petra wallet activity was a clean signal of genuine Aptos ecosystem engagement separate from validator activity.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Anti-Sybil design:</strong> Unlike many airdrops that reward wallet count,
+      Aptos's eligibility required meaningful on-chain engagement — running validator
+      infrastructure, registering identity names, minting NFTs, or using the official wallet.
+      These activities required genuine technical effort and often meaningful time investment,
+      making large-scale Sybil farming significantly harder than typical airdrop programmes.
+    </div>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section class="card" id="tokenomics">
+    <h2>APT Tokenomics: Total Supply, Distribution, and Vesting Schedule</h2>
+    <p>
+      APT launched with an initial total supply of <strong>1,000,000,000 APT (1 billion)</strong>
+      with additional supply accruing through staking inflation over time.
+    </p>
+
+    <div class="toko-bar" role="list" aria-label="APT token distribution">
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Community (ecosystem)</span>
+        <div class="toko-track"><div class="toko-fill" style="width:51.02%"></div></div>
+        <span class="toko-val">51.02%</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Core contributors (team)</span>
+        <div class="toko-track"><div class="toko-fill" style="width:19%"></div></div>
+        <span class="toko-val">19.00%</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Aptos Foundation</span>
+        <div class="toko-track"><div class="toko-fill" style="width:16.5%"></div></div>
+        <span class="toko-val">16.50%</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Investors (private sales)</span>
+        <div class="toko-track"><div class="toko-fill" style="width:13.48%"></div></div>
+        <span class="toko-val">13.48%</span>
+      </div>
+    </div>
+
+    <p style="margin-top:1.2rem">
+      The <strong>community 51.02%</strong> allocation is the largest — covering the airdrop,
+      ecosystem grants, developer incentives, and future community initiatives.
+      Core contributor (19%) and investor (13.48%) allocations vest over
+      <strong>4-year schedules with 1-year cliffs</strong> — meaning no selling
+      was possible in the first year, with gradual monthly unlocks thereafter.
+    </p>
+
+    <div class="note">
+      <strong>Staking inflation adds to supply:</strong> APT's staking reward rate
+      introduces inflationary supply over time — starting at 7% annually and
+      decreasing by 1.5% per year to a long-term floor of 3.25%.
+      This inflation rewards stakers but dilutes non-staking holders —
+      staking is important for maintaining purchasing power within the APT ecosystem.
+    </div>
+  </section>
+
+  <!-- CLAIM -->
+  <section class="card" id="claim">
+    <h2>How the APT Airdrop Claim Process Worked</h2>
+    <p>
+      The Aptos airdrop claim occurred at mainnet launch — eligible wallets could verify
+      and claim their APT allocation through the official Aptos claim interface.
+    </p>
+
+    <ol style="padding-left:1.3rem; margin-top:.5rem">
+      <li style="margin-bottom:.6rem"><strong>Set up a Petra wallet</strong> — Aptos uses its own address format and wallet standard. Petra (Aptos's official browser extension) or Martian wallet were the primary claim interfaces. MetaMask does not support Aptos natively.</li>
+      <li style="margin-bottom:.6rem"><strong>Link testnet wallet to mainnet</strong> — if your testnet activity was on a different key than your mainnet wallet, the official claim interface allowed mapping testnet activity to a mainnet address for receipt.</li>
+      <li style="margin-bottom:.6rem"><strong>Verify eligibility</strong> — connect to the official Aptos claim portal and confirm your allocation amount and category (testnet, ANS, NFT, or Petra wallet).</li>
+      <li style="margin-bottom:.6rem"><strong>Claim APT to your mainnet address</strong> — confirm the claim transaction. APT was distributed to the mainnet Aptos wallet immediately upon confirmation.</li>
+      <li><strong>APT now available in your Petra wallet</strong> — claim complete. APT could then be staked, traded on Aptos-native DEXs, or bridged to other chains via LayerZero or Wormhole.</li>
+    </ol>
+
+    <div class="note warn">
+      <strong>The claim window is closed.</strong> The original Aptos airdrop claim period
+      concluded at mainnet launch. Unclaimed allocations were returned to the ecosystem fund.
+      APT is now available for purchase on Binance, Coinbase, OKX, and Aptos-native DEXs.
+      Any "APT recovery" or "claim APT" site is a scam — do not connect your wallet.
+    </div>
+  </section>
+
+  <!-- STAKING -->
+  <section class="card" id="staking">
+    <h2>APT Staking: How to Earn Rewards Securing the Aptos Network</h2>
+    <p>
+      Aptos uses <strong>delegated proof-of-stake</strong> — APT holders delegate tokens
+      to validators who produce blocks, earning staking rewards that flow back to delegators.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>How APT staking works</h3>
+        <p style="color:var(--muted)">Connect Petra or another Aptos wallet, navigate to the staking section of the official Aptos app or a staking dashboard, select a validator by commission rate and uptime, and delegate your APT. Rewards accrue continuously and can be claimed or compounded back into your stake.</p>
+        <div class="kpi-badges"><span>Petra wallet</span><span>Non-custodial</span><span>Continuous accrual</span></div>
+      </div>
+      <div class="mini">
+        <h3>Staking reward rate</h3>
+        <p style="color:var(--muted)">Aptos staking rewards start at 7% annually and decrease by 1.5% per year until reaching the long-term floor of 3.25%. The current staking APY depends on when you're staking — verify the current rate in the official Aptos staking dashboard. Rewards are denominated in APT, so USD yield fluctuates with APT price.</p>
+        <div class="kpi-badges"><span>Started at 7% APY</span><span>Decreasing annually</span><span>3.25% floor</span></div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1rem">
+      <table aria-label="APT staking parameters">
+        <thead>
+          <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Lockup period</td>
+            <td>30 days (epoch-based)</td>
+            <td>Staked APT is locked for the current epoch — typically monthly cycles</td>
+          </tr>
+          <tr>
+            <td>Minimum stake</td>
+            <td>11 APT (delegated)</td>
+            <td>Minimum varies by validator — check specific validator requirements</td>
+          </tr>
+          <tr class="hi">
+            <td>Slashing</td>
+            <td>Not implemented at launch</td>
+            <td>Aptos chose safety over liveness — no slashing reduces delegator risk</td>
+          </tr>
+          <tr>
+            <td>Reward compounding</td>
+            <td>Automatic within validator pool</td>
+            <td>Rewards auto-compound within your stake — no manual claiming needed</td>
+          </tr>
+          <tr class="hi">
+            <td>Validator commission</td>
+            <td>Set by each validator</td>
+            <td>Typically 0–10% — compare on the official Aptos explorer before delegating</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>No slashing on Aptos (at launch):</strong> Unlike most PoS chains,
+      Aptos launched without slashing — meaning validators cannot cause delegators to lose
+      staked APT through misbehaviour. This significantly reduces the risk profile of
+      APT staking compared to Cosmos or Ethereum staking. However, this design may
+      evolve through governance — monitor official Aptos communications for any
+      changes to the slashing policy.
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section class="card" id="ecosystem">
+    <h2>Aptos DeFi and NFT Ecosystem in 2026</h2>
+    <p>
+      Since mainnet launch, Aptos has developed a growing DeFi and NFT ecosystem
+      — with major protocols deploying Move-based applications that leverage
+      Aptos's parallel execution for high-throughput financial applications.
+    </p>
+
+    <div class="table-wrap">
+      <table aria-label="Aptos ecosystem overview">
+        <thead>
+          <tr><th>Category</th><th>Key protocols</th><th>What they offer</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>DEX / AMM</td>
+            <td>Liquidswap, Thala, Cetus (via Aptos), PancakeSwap Aptos</td>
+            <td>Token swaps, liquidity provision, and yield farming on Aptos</td>
+          </tr>
+          <tr>
+            <td>Lending</td>
+            <td>Joule Finance, Aries Markets, Echelon</td>
+            <td>Supply APT and other assets to earn interest; borrow against holdings</td>
+          </tr>
+          <tr class="hi">
+            <td>Stablecoins</td>
+            <td>Thala MOD (CDP stablecoin), USDC on Aptos, USDT on Aptos</td>
+            <td>Native and bridged stablecoins for DeFi participation</td>
+          </tr>
+          <tr>
+            <td>NFT marketplaces</td>
+            <td>Wapal, Topaz, Souffl3</td>
+            <td>Mint, buy, and sell Aptos-native NFTs using APT</td>
+          </tr>
+          <tr class="hi">
+            <td>Bridges</td>
+            <td>LayerZero, Wormhole, Celer cBridge</td>
+            <td>Transfer assets between Aptos and EVM chains</td>
+          </tr>
+          <tr>
+            <td>Identity / Domains</td>
+            <td>Aptos Name Service (ANS)</td>
+            <td>Register human-readable .apt domain names for wallet addresses</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Move's composability advantage:</strong> Because Move's resource model
+      prevents asset duplication, DeFi protocols on Aptos can share assets
+      with stronger safety guarantees than EVM chains — a liquidity position
+      in one protocol cannot be accidentally used in another without explicit permission.
+      This composability safety is a long-term technical advantage for
+      complex DeFi applications on Aptos.
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="card" id="safety">
+    <h2>Security: Scams Targeting APT Holders and How to Stay Protected</h2>
+
+    <div class="table-wrap">
+      <table aria-label="Scam types and protection">
+        <thead>
+          <tr><th>Scam type</th><th>How it works</th><th>Protection</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Fake "APT claim" sites</td>
+            <td>Phishing sites mimic Aptos's UI — drain wallet on "claim" approval or request seed phrase</td>
+            <td class="ok">Airdrop is closed. No legitimate APT claim site exists. Bookmark only aptosfoundation.org and aptoslabs.com</td>
+          </tr>
+          <tr>
+            <td>Fake Petra wallet extensions</td>
+            <td>Malicious browser extensions impersonating Petra — steal seed phrases or private keys</td>
+            <td class="ok">Install Petra only from the Chrome Web Store or Firefox Add-ons — verify developer is "Aptos Labs"</td>
+          </tr>
+          <tr class="hi">
+            <td>Discord / Telegram DMs</td>
+            <td>"Aptos team" DMs offering unclaimed APT or exclusive opportunities</td>
+            <td class="ok">Aptos team never DMs about claims — block and report immediately</td>
+          </tr>
+          <tr>
+            <td>Fake APT tokens on EVM chains</td>
+            <td>Copycat "APT" ERC-20 tokens on Ethereum or BSC — worthless imitations</td>
+            <td class="ok">APT is native to Aptos blockchain — any ERC-20 "APT" is either a bridge-wrapped version or a scam. Verify contract addresses</td>
+          </tr>
+          <tr class="hi">
+            <td>Phishing search ads</td>
+            <td>Paid ads appearing above official Aptos sites in search results</td>
+            <td class="ok">Bookmark official URLs; never use search ads to navigate to Aptos apps</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="card" id="comparison">
+    <h2>Aptos vs Sui vs Solana vs Ethereum: Layer 1 Comparison</h2>
+
+    <div class="table-wrap">
+      <table aria-label="L1 blockchain comparison">
+        <thead>
+          <tr><th>Feature</th><th>Aptos</th><th>Sui</th><th>Solana</th><th>Ethereum</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Smart contract language</td>
+            <td class="ok">Move (resource-typed)</td>
+            <td class="ok">Move (object-based variant)</td>
+            <td class="warn">Rust (BPF programs)</td>
+            <td class="warn">Solidity (EVM)</td>
+          </tr>
+          <tr>
+            <td>Execution model</td>
+            <td class="ok">Block-STM parallel</td>
+            <td class="ok">Narwhal DAG parallel</td>
+            <td class="ok">Parallel (Sealevel)</td>
+            <td class="err">Sequential</td>
+          </tr>
+          <tr class="hi">
+            <td>Theoretical TPS</td>
+            <td class="ok">100,000+</td>
+            <td class="ok">100,000+</td>
+            <td class="ok">~50,000</td>
+            <td class="err">~15–30</td>
+          </tr>
+          <tr>
+            <td>Finality</td>
+            <td class="ok">~1 second</td>
+            <td class="ok">~2 seconds</td>
+            <td class="ok">~0.4 seconds</td>
+            <td class="warn">~12 minutes (finality)</td>
+          </tr>
+          <tr class="hi">
+            <td>Asset safety model</td>
+            <td class="ok">Linear types — provably safe</td>
+            <td class="ok">Object model — provably safe</td>
+            <td class="warn">Account-based — requires manual guards</td>
+            <td class="warn">ERC-20 — requires manual guards</td>
+          </tr>
+          <tr>
+            <td>Developer ecosystem</td>
+            <td class="warn">Growing rapidly</td>
+            <td class="warn">Growing rapidly</td>
+            <td class="ok">Large — established</td>
+            <td class="ok">Dominant — largest</td>
+          </tr>
+          <tr class="hi">
+            <td>EVM compatibility</td>
+            <td class="err">No — Move native</td>
+            <td class="err">No — Move native</td>
+            <td class="warn">Limited (via Neon)</td>
+            <td class="ok">Native</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:1rem">
+      <strong>Aptos vs Sui — the sibling rivalry:</strong> Aptos and Sui are both Move-based
+      chains founded by former Diem engineers — but they split into separate companies
+      (Aptos Labs vs Mysten Labs) before launch. Their Move variants differ technically:
+      Aptos uses resource-based Move closer to the original Diem design;
+      Sui uses an object-centric Move variant with different state ownership semantics.
+      Both are competitors for the high-throughput, safe-smart-contract L1 market
+      that Ethereum currently serves with Solidity.
+    </div>
+  </section>
+
+  <!-- BEST PRACTICES -->
+  <section class="card" id="best-practices">
+    <h2>Best Practices for APT Holders and Stakers</h2>
+    <ul style="padding-left:1.2rem">
+      <li style="margin-bottom:.5rem"><strong>Use the official Petra wallet</strong> for Aptos interactions — only install from the Chrome Web Store, verifying the developer is "Aptos Labs". Third-party Aptos wallets exist but Petra has the strongest official support and security track record.</li>
+      <li style="margin-bottom:.5rem"><strong>Stake APT to maintain purchasing power</strong> against inflation — APT staking rewards offset the inflationary supply increase. Non-staking APT holders are diluted by the staking reward distribution to active stakers.</li>
+      <li style="margin-bottom:.5rem"><strong>Research validators before delegating</strong> — compare commission rates and uptime on the official Aptos explorer. Aptos doesn't slash for validator misbehaviour (at time of writing), but a validator with poor uptime still means missed rewards during downtime.</li>
+      <li style="margin-bottom:.5rem"><strong>Verify all DeFi protocol contracts on the Aptos explorer</strong> before depositing APT — even on Move-based chains, smart contracts can contain intentional exploits or poor logic. Verify the protocol is audited and established before significant deposits.</li>
+      <li style="margin-bottom:.5rem"><strong>For bridged APT on EVM chains</strong> — if you use LayerZero or Wormhole to move APT to Ethereum or BNB Chain, ensure you're using official bridge contracts verified from Aptos's official documentation. Verify wrapped APT contract addresses independently.</li>
+      <li><strong>Bookmark aptoslabs.com and aptosfoundation.org</strong> — verify these domains before every session involving APT or Aptos wallet interactions. Never navigate via search results or social media links.</li>
+    </ul>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section class="card" id="troubleshooting">
+    <h2>Troubleshooting Aptos: Missing APT, Wallet Setup, and Staking Issues</h2>
+
+    <h3>"I can't find my APT after claiming the airdrop"</h3>
+    <ul style="padding-left:1.2rem">
+      <li>APT lives on the Aptos blockchain — it won't appear in MetaMask or any EVM wallet. You need Petra wallet (or compatible Aptos wallet) configured for Aptos mainnet. Open Petra and search your Aptos address on explorer.aptoslabs.com to confirm your balance on-chain.</li>
+      <li>If the Aptos explorer shows APT at your address but Petra doesn't display it, try refreshing the wallet or checking the network configuration — ensure Petra is set to Aptos Mainnet (not testnet).</li>
+    </ul>
+
+    <h3>"I don't know how to set up a Petra wallet for Aptos"</h3>
+    <ul style="padding-left:1.2rem">
+      <li>Install Petra from the Chrome Web Store (developer: Aptos Labs). Click the extension icon, select "Create New Wallet", write down your seed phrase securely (never digitally), and set a password. Your Aptos address starts with "0x" followed by a 64-character hex string — distinct from Ethereum addresses.</li>
+      <li>Use the official Petra documentation at petra.app for step-by-step setup guidance rather than third-party tutorials, which may be outdated or inaccurate.</li>
+    </ul>
+
+    <h3>"My staking rewards aren't showing"</h3>
+    <ul style="padding-left:1.2rem">
+      <li>Aptos staking rewards auto-compound within the validator stake pool during the epoch — they're added to your staking balance rather than appearing as separate claimable rewards. Check your total staked balance (not just initial deposit) to see reward accumulation.</li>
+      <li>If staking through a third-party interface, verify it's reading Aptos mainnet data correctly — some DeFi dashboards have delays in reflecting Aptos staking positions.</li>
+    </ul>
+
+    <div class="note">
+      <strong>Aptos Explorer is ground truth:</strong> For any Aptos on-chain verification,
+      explorer.aptoslabs.com is the official block explorer. Search your address to see
+      APT balance, staking positions, and transaction history.
+    </div>
+  </section>
+
+  <!-- EEAT -->
+  <section class="eeat" id="eeat" aria-labelledby="eeat-title">
+    <h2 id="eeat-title">Aptos Airdrop: Authoritative References &amp; External Sources</h2>
+
+    <h3>Aptos — Official Sources</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://aptoslabs.com/" target="_blank" rel="noopener nofollow">Aptos Labs — Official Website</a></li>
+      <li><a href="https://aptosfoundation.org/" target="_blank" rel="noopener nofollow">Aptos Foundation — Official Foundation Site</a></li>
+      <li><a href="https://explorer.aptoslabs.com/" target="_blank" rel="noopener nofollow">Aptos Explorer — Official Block Explorer</a></li>
+      <li><a href="https://aptos.dev/" target="_blank" rel="noopener nofollow">Aptos Developer Documentation</a></li>
+      <li><a href="https://petra.app/" target="_blank" rel="noopener nofollow">Petra Wallet — Official Aptos Wallet</a></li>
+    </ul>
+
+    <h3>Technical Research</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://arxiv.org/abs/2203.11510" target="_blank" rel="noopener nofollow">Block-STM — Parallel Execution Paper (arXiv)</a></li>
+      <li><a href="https://move-language.github.io/move/" target="_blank" rel="noopener nofollow">Move Language — Official Documentation</a></li>
+    </ul>
+
+    <h3>Data &amp; Analytics</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://defillama.com/chain/Aptos" target="_blank" rel="noopener nofollow">DeFiLlama — Aptos TVL &amp; Ecosystem Data</a></li>
+      <li><a href="https://www.stakingrewards.com/earn/aptos/" target="_blank" rel="noopener nofollow">Staking Rewards — APT Staking APY Data</a></li>
+      <li><a href="https://koinly.io/guides/crypto-airdrop-tax/" target="_blank" rel="noopener nofollow">Koinly — Crypto Airdrop Tax Guide</a></li>
+    </ul>
+
+    <div class="note" style="margin-top:1.2rem">
+      <strong>About:</strong> Prepared by Crypto Finance Experts as a practical, SEO-oriented knowledge base for
+      <em>Aptos Airdrop</em>: APT token distribution, eligibility, Move language, Block-STM, staking, ecosystem, and security.
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title" style="margin-top:0;border-top:none;padding-top:0">Aptos Airdrop: Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f1" id="b1">
+        <h3>What is Aptos and what is the APT token?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f1" class="faq-content" role="region" aria-labelledby="b1">
+        <p>Aptos is a Layer 1 blockchain developed by former Meta engineers who built the Diem (Libra) project. It uses the Move programming language — a resource-based smart contract language designed for safe financial applications — and Block-STM parallel execution, which allows thousands of transactions to execute simultaneously. APT is Aptos's native token, used for gas fees, staking to secure the network, governance voting, and as the primary currency in Aptos's DeFi and NFT ecosystem.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f2" id="b2">
+        <h3>Who was eligible for the Aptos APT airdrop?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f2" class="faq-content" role="region" aria-labelledby="b2">
+        <p>Four categories were eligible: (1) participants in Aptos's incentivized testnets (IT1, IT2, IT3) — particularly those who ran validator nodes or completed ecosystem tasks; (2) ANS domain holders who registered .apt names on testnet; (3) wallets that minted NFTs from the official Souffl3 collection on testnet; (4) early Petra wallet users who interacted with Aptos on testnet. Eligibility tiers varied — more substantive participation resulted in larger APT allocations.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f3" id="b3">
+        <h3>Can I still claim the Aptos airdrop?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f3" class="faq-content" role="region" aria-labelledby="b3">
+        <p>No — the Aptos airdrop claim window concluded at mainnet launch in October 2022. Unclaimed APT was returned to the ecosystem fund. APT is now available for purchase on major centralised exchanges (Binance, Coinbase, OKX) and Aptos-native DEXs (Liquidswap, Thala). Any site claiming to let you still "claim APT" or "recover your airdrop" is a phishing scam — do not connect your wallet or enter any credentials.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f4" id="b4">
+        <h3>What makes Move different from Solidity and why does it matter?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f4" class="faq-content" role="region" aria-labelledby="b4">
+        <p>Move uses a linear type system where digital assets are "resources" — they can only exist in one place at a time, cannot be accidentally copied, and cannot be destroyed unless explicitly programmed to be. This makes entire categories of vulnerabilities structurally impossible: reentrancy attacks (the source of many DeFi hacks), token duplication bugs, and integer overflow errors. Move also supports formal verification via the Move Prover — allowing mathematical proofs that code behaves correctly. Solidity requires developers to prevent these vulnerabilities through coding conventions; Move prevents them by design.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f5" id="b5">
+        <h3>How do I stake APT and earn staking rewards?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f5" class="faq-content" role="region" aria-labelledby="b5">
+        <p>Use Petra wallet (the official Aptos wallet) and navigate to the staking section of aptos.dev or a staking dashboard. Select a validator by reviewing commission rates and uptime on the Aptos explorer. Delegate APT to your chosen validator — a minimum of 11 APT is typically required. Rewards auto-compound within your staking position and don't need to be manually claimed. The stake is locked for the current epoch (approximately monthly), after which you can withdraw. Aptos currently has no slashing, so delegator risk is limited to missed rewards during validator downtime.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f6" id="b6">
+        <h3>What is Block-STM and why does it matter for Aptos performance?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f6" class="faq-content" role="region" aria-labelledby="b6">
+        <p>Block-STM (Software Transactional Memory) is Aptos's parallel execution engine. Instead of processing transactions one-by-one like Ethereum, Block-STM executes all transactions in a block simultaneously across multiple CPU cores, then identifies any that conflicted (accessed the same state). Non-conflicting transactions are committed; conflicting ones are re-executed. This approach achieves theoretical throughput of 100,000+ TPS. It's published as an academic paper (arXiv 2203.11510) and represents a genuine algorithmic innovation in blockchain performance.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f7" id="b7">
+        <h3>What wallet do I need to hold APT?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f7" class="faq-content" role="region" aria-labelledby="b7">
+        <p>APT is native to the Aptos blockchain, which uses its own address format and transaction model — it is not EVM-compatible. MetaMask does not support Aptos. You need an Aptos-native wallet: Petra (official, developed by Aptos Labs — install only from Chrome Web Store), Martian Wallet, or Pontem Wallet. For hardware wallet security, Ledger supports Aptos via Petra. Aptos addresses start with "0x" followed by 64 hex characters — distinct from Ethereum despite the similar "0x" prefix.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f8" id="b8">
+        <h3>How does Aptos compare to Sui — both use Move?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f8" class="faq-content" role="region" aria-labelledby="b8">
+        <p>Both Aptos and Sui use Move and were founded by former Diem engineers who split into separate companies. Aptos (Aptos Labs) uses Move closer to the original Diem resource model with Block-STM execution. Sui (Mysten Labs) uses an object-centric Move variant where assets are objects with independent ownership — allowing truly parallel execution without conflict detection. Sui's DAG-based consensus (Narwhal/Bullshark) differs from Aptos's Jolteon BFT consensus. Both are technically innovative; Aptos launched earlier (October 2022) while Sui launched in May 2023. They serve similar but competitive markets.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f9" id="b9">
+        <h3>Are APT staking rewards taxable?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f9" class="faq-content" role="region" aria-labelledby="b9">
+        <p>In most jurisdictions (US, UK, EU), staking rewards are treated as ordinary income at their fair market value when received. The original APT airdrop was also taxable income at receipt value in most jurisdictions. Subsequent sales of APT trigger capital gains based on the difference between cost basis and sale price. APT staking auto-compounds within the validator pool — consult your tax professional about whether auto-compounded rewards are taxable at each epoch or at withdrawal, as this varies by jurisdiction. Use Koinly or CoinTracker to generate accurate Aptos transaction records.</p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="container" role="contentinfo" style="padding:2.5rem 0; border-top:1px solid var(--line); margin-top:2rem">
+  <p style="color:var(--dim); font-size:.93rem">© 2026 Aptos Airdrop Guide. Educational content with a security-first focus. Not financial or tax advice.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-button').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const c = document.getElementById(b.getAttribute('aria-controls'));
+        c.classList.remove('open'); c.style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        content.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
